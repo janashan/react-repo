@@ -43,7 +43,7 @@ class App extends React.Component {
         </Header>
         <SearchBar searchForTopic={this.searchForTopic} />
         {loading && (
-          <p style={{ textAlign: "center" }}>Searching for articles...</p>
+          <div class="ui active centered inline loader"></div>
         )}
         {articles.length > 0 && (
           <Header as="h4" style={{ textAlign: "center", margin: 20 }}>

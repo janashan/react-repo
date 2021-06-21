@@ -1,6 +1,76 @@
 import React from "react";
 import { Button, Form } from "semantic-ui-react";
 
+const countries = [
+  {
+    name:'India',
+    value:'in'
+  },{
+    name:'United States of America',
+    value:'us'
+  },{
+    name:'United Kingdom',
+    value:'gb'
+  },{
+    name:'Canada',
+    value:'ca'
+  },{
+    name:'China',
+    value:'cn'
+  },{
+    name:'Russia',
+    value:'ru'
+  },{
+    name:'France',
+    value:'fr'
+  },{
+    name:'Philippines',
+    value:'ph'
+  },{
+    name:'United Arab Emirates',
+    value:'ae'
+  },{
+    name:'Australia',
+    value:'au'
+  },{
+    name:'Argentina',
+    value:'ar'
+  },{
+    name:'Indonesia',
+    value:'id'
+  },
+  {
+    name:'South Korea',
+    value:'kr'
+  }
+];
+
+const categories = [
+  {
+    name:'Business',
+    value:'business'
+  },{
+    name:'Entertainment',
+    value:'entertainment'
+  },{
+    name:'General',
+    value:'general'
+  },{
+    name:'Health',
+    value:'health'
+  },{
+    name:'Science',
+    value:'science'
+  },{
+    name:'Sports',
+    value:'sports'
+  },
+  {
+    name:'Technology',
+    value:'technology'
+  }
+];
+
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
@@ -9,6 +79,7 @@ class SearchBar extends React.Component {
       country: "",
       category: ""
     };
+    
   }
 
   handleChange = event => {
@@ -19,7 +90,14 @@ class SearchBar extends React.Component {
       [name]: value
     });
   };
-
+ 
+  componentDidMount(){
+    this.setState({
+      country:'in',
+      category:'general',
+    searchForTopic: 'this.handleSubmit()'})
+  }
+  
   handleSubmit = event => {
     debugger
     event.preventDefault();
@@ -33,42 +111,26 @@ class SearchBar extends React.Component {
           <Form.Group>
             <select
               as='select'
-              defaultValue={this.state.country}
               onChange={this.handleChange}
               name="country"
               style={{margin:'6px',width:'50%'}}
             >
-              <option value=''>Select Country</option>
-              <option value='in'>India</option>
-              <option value='us'>United States of America</option>
-              <option value='gb'>United Kingdom</option>
-              <option value='ca'>Canada</option>
-              <option value='cn'>China</option>
-              <option value='ru'>Russia</option>
-              <option value='fr'>France</option>
-              <option value='ph'>Philippines</option>
-              <option value='ae'>United Arab Emirates</option>
-              <option value='au'>Australia</option>
-              <option value='ar'>Argentina</option>
-              <option value='kr'>South Korea</option>
-              <option value='id'>Indonesia</option>
+             {
+               countries.map((country) =>(
+                 <option value={country.value}>{country.name}</option>
+               ))
+             }
             </select>
             <select
               as='select'
-              defaultValue={this.state.category}
               onChange={this.handleChange}
               name="category"
               style={{margin:'6px',width:'50%'}}
 
             >
-              <option value=''>All Category</option>
-              <option value='business'>Business</option>
-              <option value='entertainment'>Entertainment</option>
-              <option value='general'>General</option>
-              <option value='health'>Health</option>
-              <option value='science'>Science</option>
-              <option value='sports'>Sports</option>
-              <option value='technology'>Technology</option>
+              {categories.map((category) =>(
+                <option value={category.value}>{category.name}</option>
+              ))}
             </select>
             <Form.Input
               style={{margin:'6px'}}
