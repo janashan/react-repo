@@ -17,11 +17,12 @@ class App extends React.Component {
     try {
       this.setState({ loading: true });
       const response = await getArticles(topic);
-      debugger
+      
+     
       this.setState({
-        articles: response.articles,
+        articles: response.articles || [],
         search: topic,
-        totalResults: response.totalResults
+        totalResults: response.totalResults || []
       });
     } catch (error) {
       this.setState({ apiError: "Could not find any articles" });

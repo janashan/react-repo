@@ -29,12 +29,12 @@ const ArticleItem = props => {
           <Image src={article.urlToImage} />
         </Grid.Column>
       </Grid>
+      
     </List.Item>
   );
 };
 
 const ArticleList = props => {
-  debugger
   return (
     <List divided style={{ maxWidth: 900, margin: "0 auto" }}>
       {props.articles.map((article, index) => (

@@ -76,8 +76,8 @@ class SearchBar extends React.Component {
     super(props);
     this.state = {
       searchTopic: "",
-      country: "",
-      category: ""
+      country: "in",
+      category: "general"
     };
     
   }
@@ -92,14 +92,16 @@ class SearchBar extends React.Component {
   };
  
   componentDidMount(){
+    
+    this.props.searchForTopic(this.state);
     this.setState({
       country:'in',
       category:'general',
-    searchForTopic: 'this.handleSubmit()'})
+    })
   }
   
   handleSubmit = event => {
-    debugger
+    
     event.preventDefault();
     this.props.searchForTopic(this.state);
   };

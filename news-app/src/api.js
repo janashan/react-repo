@@ -7,6 +7,7 @@ export const getArticles = async obj => {
       Accept: 'application/json',
     },
   });
+
   const json = await response.json();
   return json;
 };
